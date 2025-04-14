@@ -1,0 +1,9 @@
+BasedOnStyle: LLVM
+AccessModifierOffset: -4
+AllowAllArgumentsOnNextLine: false
+AllowAllParametersOfDeclarationOnNextLine: false
+BinPackArguments: false
+BinPackParameters: false
+IndentWidth: 4
+PointerAlignment: Left
+TabWidth: 4
