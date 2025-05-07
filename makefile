@@ -1,18 +1,28 @@
-SRC = \
-	  main.c
+CC = gcc
+CFLAGS = -std=gnu11 -Wall -Wextra -pedantic
 
-OBJ = $(SRC:.c=.o)
+BUILD = build
+
+SRC = \
+	src/main.c \
+	src/log.c
+
+OBJ = $(patsubst src/%.c, $(BUILD)/%.o, $(SRC))
 
 TARGET = ufs
+
+.PHONY: all clean
 
 all: $(TARGET)
 
 $(TARGET): $(OBJ)
-	gcc -o $(TARGET) $(OBJ)
+	$(CC) $(CFLAGS) -o $@ $(OBJ)
 
-%.o: %.c
-	gcc -c -o $@ $<
-
+$(BUILD)/%.o: src/%.c
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) -MMD -c $< -o $@
 
 clean:
-	rm -f $(OBJ) $(TARGET)
+	rm -rf $(BUILD) $(TARGET)
+
+-include $(OBJ:.o=.d)

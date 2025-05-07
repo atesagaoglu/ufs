@@ -5,5 +5,5 @@ AllowAllParametersOfDeclarationOnNextLine: false
 BinPackArguments: false
 BinPackParameters: false
 IndentWidth: 4
-PointerAlignment: Left
+PointerAlignment: Right
 TabWidth: 4
